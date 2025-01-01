@@ -7,7 +7,7 @@ import {ToastContainer} from "react-toastify"
 
 function Home() {
   const [loggedinUser,setLoggedInUser] = useState('');
-  const [products,setProducts] = useState('');
+  const [products,setProducts] = useState([]);
   const navigate = useNavigate()
 
   useEffect(()=>{
@@ -36,7 +36,10 @@ function Home() {
     }
 
     try {
-      const response = await fetch(url)
+      const response = await fetch(url, {
+  headers: {
+    'Authorization': `Bearer ${token}`
+  })
       if (!response.ok) {
         const errorMessage = await response.text();
         console.error('Error fetching products:', response.status, errorMessage);
@@ -66,9 +69,9 @@ function Home() {
 
     <div> 
          {
-          products && products.map((item)=>(
+        Array.isArray(products) && products.map((item) => (
             <ul>
-              <span>
+              <span key={item.id}>
                 {item.name} : {item.price}
               </span>
             </ul>
