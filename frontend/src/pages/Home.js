@@ -25,7 +25,7 @@ function Home() {
 
    }
      
-   const fetchProducts = async()=>{
+   const fetchProducts = async () => {
     const url = "https://deploy-mern-app-api-tawny.vercel.app/products" ;
     const token = localStorage.getItem('token')
     
@@ -70,8 +70,8 @@ function Home() {
     <div> 
          {
         Array.isArray(products) && products.map((item) => (
-            <ul>
-              <span key={item.id}>
+            <ul key={item.id}>
+              <span}>
                 {item.name} : {item.price}
               </span>
             </ul>
