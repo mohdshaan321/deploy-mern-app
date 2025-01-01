@@ -36,13 +36,7 @@ function Home() {
     }
 
     try {
-      const response = await fetch(url,{
-        method : 'GET',
-        headers : {
-          'Authorization' : `Bearer ${token}`,
-         "Content-Type" : 'application/json'
-        }
-      })
+      const response = await fetch(url)
       if (!response.ok) {
         const errorMessage = await response.text();
         console.error('Error fetching products:', response.status, errorMessage);
