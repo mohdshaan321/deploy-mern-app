@@ -26,7 +26,7 @@ function Home() {
    }
      
    const fetchProducts = async()=>{
-    const url = "http://localhost:8085/products" ;
+    const url = "https://deploy-mern-app-api-tawny.vercel.app/products" ;
     const token = localStorage.getItem('token')
     
 
